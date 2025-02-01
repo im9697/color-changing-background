@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changing Background</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, blue, orange, yellow, red, green, purple, pink);
+            background-size: 200% 200%;
+            animation: waveGradient 5s infinite ease-in-out;
+        }
+        
+        @keyframes waveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 50% 70%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 30%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Background Changes Color!</h1>
+</body>
+</html>
