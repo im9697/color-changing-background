@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Fan Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #2980b9;
+            --background-dark: #121212;
+            --background-light: #ecf0f1;
+            --text-color-light: #ecf0f1;
+            --text-color-dark: #e0e0e0;
+            --button-color: #f39c12;
+        }
+
+        body {
+            background: url('https://images.unsplash.com/photo-1518873890627-d4b177c06e51?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ludGVyJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color-light);
+            transition: background-color 0.3s, color 0.3s;
+            cursor: url('https://i.imgur.com/XelXthN.png'), auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            opacity: 0;
+            animation: fadeInPage 2s forwards;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 3em;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: var(--background-dark) url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9x_UNMEEPTPvj2E_2G23vhebSnkTB5newlA&s') repeat;
+            background-size: 200px 200px;
+            color: var(--text-color-dark);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        body.dark-mode h1 {
+            color: #8e44ad;
+        }
+
+        /* Winter Mode */
+        body.winter-mode {
+            background: url('https://img.lovepik.com/background/20211021/large/lovepik-winter-background-image_401652318.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #130f40;
+            cursor: url('https://i.imgur.com/VmlJsyy.png'), auto;
+        }
+
+        body.winter-mode h1 {
+            color: var(--secondary-color);
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            font-size: 1.5em;
+            color: #fff;
+            animation: fall 10s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                left: 0;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                left: 100%;
+            }
+        }
+
+        .snowman {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            animation: bounce 2s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Buttons Section */
+        #buttons-section {
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        .button {
+            font-size: 1em;
+            font-weight: 600;
+            padding: 10px 20px;
+            color: var(--text-color-light);
+            background: var(--primary-color);
+            border: 2px solid var(--text-color-light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s ease;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .button:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        /* Content Styling */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(52, 73, 94, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .content-wrapper {
+            background: rgba(33, 33, 33, 0.9);
+        }
+
+        body.winter-mode .content-wrapper {
+            background: rgba(116, 185, 255, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #34495e;
+            color: #bdc3c7;
+        }
+
+        body.dark-mode footer {
+            background: #222222;
+        }
+
+        body.winter-mode footer {
+            background: #74b9ff;
+        }
+
+        /* Snowflakes */
+        .snowflake:nth-child(1) {
+            left: 10%;
+            animation-duration: 12s;
+        }
+
+        .snowflake:nth-child(2) {
+            left: 20%;
+            animation-duration: 14s;
+        }
+
+        .snowflake:nth-child(3) {
+            left: 30%;
+            animation-duration: 16s;
+        }
+
+        /* Suggestion Form */
+        #suggestion-form {
+            display: none;
+            margin: 20px;
+            text-align: center;
+            background: rgba(33, 33, 33, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #suggestion-form textarea {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            background-color: #333;
+            color: var(--text-color-light);
+        }
+
+        #suggestion-form button {
+            background: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #suggestion-form button:hover {
+            background: #c0392b;
+        }
+
+        /* Scroll Buttons */
+        .scroll-button {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            color: var(--text-color-light);
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .scroll-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .scroll-button.up {
+            bottom: 100px;
+            right: 20px;
+        }
+
+        .scroll-button.down {
+            bottom: 40px;
+            right: 20px;
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fortnite Fan Website</h1>
+<h3 style="color: var(--primary-color); font-weight: bold;">
+    Designed by Reginald and only Reginald - copied by lakshratnani@outlook.com
+</h3>
+
+
+    <!-- Centered Buttons -->
+    <div id="buttons-section">
+        <button id="darkModeButton" class="button" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">Dark Mode</button>
+        <button id="winterModeButton" class="button" onclick="toggleWinterMode()" aria-label="Toggle Winter Mode">Winter Mode</button>
+        <button class="button" onclick="toggleSuggestionForm()" aria-label="Give Suggestion">Give a Suggestion</button>
+    </div>
+
+    <!-- Suggestion Form -->
+    <div id="suggestion-form">
+        <h2>Your Suggestion</h2>
+        <textarea id="suggestion-text" placeholder="Write your suggestion here..." aria-label="Your suggestion"></textarea><br><br>
+        <button onclick="submitSuggestion()">Submit Suggestion</button>
+    </div>
+
+    <!-- Popup Alert -->
+    <div id="popup" class="popup">
+        <p>Thank you for your suggestion!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- About Section -->
+    <div class="content-wrapper" id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm Raihan (a.k.a. Reginald). I'm a gamer and the creator of this website. I love Fortnite for its creative gameplay, strategic challenges, and vibrant community.</p>
+        <p>This website is a hub for Fortnite fans, sharing gameplay tips, lore insights, and updates.</p>
+        <a href="https://rn9997.github.io/about-myself-project/" target="_blank" class="button">More About Me</a>
+    </div>
+
+    <!-- Fortnite Information -->
+    <div class="content-wrapper" id="gameplay">
+        <h2>What is Fortnite?</h2>
+        <p>Fortnite is a genre-defining multiplayer game that combines fast-paced action, strategic gameplay, and an ever-evolving storyline. It offers modes like Battle Royale, Creative, and Save the World, catering to a diverse player base.</p>
+    </div>
+
+    <div class="content-wrapper">
+        <h2>Fortnite Gameplay</h2>
+        <p>Fortnite challenges players with its unique mix of shooting mechanics, resource gathering, and tactical building. The fast-paced gameplay ensures adrenaline-packed sessions.</p>
+        <p>The game's building mechanics add a strategic layer, letting players create defenses or high ground in the heat of battle.</p>
+        <p>Fortnite also incorporates seasonal changes, constantly refreshing gameplay with new mechanics and locations.</p>
+    </div>
+
+    <div class="content-wrapper" id="events">
+        <h2>Events and Updates</h2>
+        <p>With frequent updates and collaborations, Fortnite keeps the experience fresh. From live events to partnerships with Marvel and Star Wars, there's always something exciting happening.</p>
+        <p>Epic Games' dedication to innovative storytelling ensures players always have new challenges and content.</p>
+    </div>
+
+    <div class="content-wrapper" id="lore">
+        <h2>Fortnite Lore</h2>
+        <p>Fortnite's story evolves with each season, offering players an immersive narrative filled with new characters, events, and mysteries.</p>
+        <p>Major events, such as the Zero Point storyline, have captivated players and tied together the entire Fortnite universe.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Fortnite Fan Website | All rights reserved.</p>
+    </footer>
+
+    <!-- Snowflakes -->
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <img src="https://i.imgur.com/fYtRfV1.png" class="snowman" alt="Snowman" loading="lazy">
+
+    <!-- Scroll Buttons -->
+    <button class="scroll-button up" onclick="scrollToTop()">↑</button>
+    <button class="scroll-button down" onclick="scrollToBottom()">↓</button>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function toggleWinterMode() {
+            document.body.classList.toggle('winter-mode');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function toggleSuggestionForm() {
+            const form = document.getElementById('suggestion-form');
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function submitSuggestion() {
+            const suggestionText = document.getElementById('suggestion-text').value;
+            if (suggestionText.trim() !== "") {
+                alert("Thank you for your suggestion!");
+                document.getElementById('suggestion-text').value = "";
+                toggleSuggestionForm();
+                showPopup();
+            } else {
+                alert("Please write a suggestion before submitting.");
+            }
+        }
+
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
